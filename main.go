@@ -88,6 +88,7 @@ func parseStmts(s []ast.Stmt) (total int) {
 			total += checkInlineFunc(stmt.Call.Fun)
 		}
 	}
+	
 	return
 }
 
@@ -95,10 +96,12 @@ func checkInlineFunc(stmt ast.Expr) int {
 	if block, ok := stmt.(*ast.FuncLit); ok {
 		return parseStmts(block.Body.List)
 	}
+	
 	return 0
 }
 
 func parseBodyListStmts(t interface{}) int {
 	i := reflect.ValueOf(t).Elem().FieldByName(`Body`).Elem().FieldByName(`List`).Interface()
+	
 	return parseStmts(i.([]ast.Stmt))
 }
