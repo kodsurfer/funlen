@@ -8,8 +8,8 @@ import (
 )
 
 const (
-	defaultLineLimit = 60
-	defaultStmtLimit = 40
+	defaultLineLimit = 80
+	defaultStmtLimit = 50
 )
 
 // Run runs this linter on the provided code
